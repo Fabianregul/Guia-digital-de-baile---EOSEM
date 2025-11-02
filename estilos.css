@@ -1,0 +1,50 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f4f4f4;
+  }
+
+  /* Contenedor principal centrado */
+  main {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .container {
+    width: 80%;
+    display: flex;
+    flex-direction: column; /* en columna (puedes cambiar a row si quieres en fila) */
+    align-items: center;
+    justify-content: center;
+    gap: 3px; /* espacio entre imágenes */
+  }
+
+  /* Estilos de las imágenes */
+  .container img {
+    width: 100%;
+    max-width: 600px; /* límite máximo del tamaño de imagen */
+    height: auto;
+    border-radius: 0; /* sin bordes redondeados */
+    box-shadow: none; /* sin sombra */
+  }
+
+  /* Responsividad para móviles */
+  @media (max-width: 768px) {
+    .container {
+      width: 90%;
+    }
+    .container img {
+      max-width: 100%;
+    }
+  }
