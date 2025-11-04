@@ -4,79 +4,158 @@
   box-sizing: border-box;
 }
 
-body, html {
-  width: 100%;
-  height: 100%;
-  font-family: 'Poppins', sans-serif;
-  background: url('./img/fondo.jpg') no-repeat center center/cover;
+body {
+  margin: 0;
+  padding: 0;
   display: flex;
   justify-content: center;
   align-items: center;
+  min-height: 100vh;
+  background-color: #f4f4f4;
+  font-family: 'Poppins', sans-serif;
 }
 
-/* 📱 Fondo para vista mobile */
-@media (max-width: 767px) {
-  body, html {
-    background: url('./img/fondo_mobile.jpg') no-repeat center center/cover;
-  }
+/* Contenedor principal centrado */
+main {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
-/* Contenedor centrado y reducido */
-.menu-container {
+.container {
+  width: 80%;
   display: flex;
   flex-direction: column;
-  width: 70%;
-  height: 40vh;
-  border-radius: 15px;
-  overflow: hidden;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(10px);
-}
-
-/* Cada cuadro */
-.menu-item {
-  flex: 1;
-  display: flex;
-  justify-content: center;
   align-items: center;
-  color: #000;
-  font-size: 0.9rem;
-  font-weight: 700;
+  justify-content: center;
+  gap: 3px;
+}
+
+/* Imágenes y videos al mismo tamaño */
+.container img,
+.container video,
+.container iframe {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  border-radius: 0;
+  box-shadow: none;
+  display: block;
+  object-fit: contain;
+}
+
+/* Ajuste de iframe (YouTube) para mantener proporción */
+.container iframe {
+  aspect-ratio: 16 / 9;
+  height: auto;
+  border-radius: 10px;
+  margin: 10px 0;
+}
+
+/* --- BOTÓN FLOTANTE --- */
+.fab {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  width: 60px;
+  height: 60px;
+  border: none;
+  border-radius: 50%;
+  background-color: #ff5a5f;
+  color: white;
+  font-size: 28px;
   cursor: pointer;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: inset 0 0 15px rgba(255, 255, 255, 0.1);
+  box-shadow: 0px 4px 8px rgba(0,0,0,0.3);
+  transition: 0.3s;
+  z-index: 1000;
 }
 
-/* Colores con transparencia tipo glassmorphism */
-.bachata {
-  background: linear-gradient(135deg, rgba(184, 78, 145, 0.4), rgba(255, 111, 97, 0.4));
-}
-.salsa {
-  background: linear-gradient(135deg, rgba(255, 78, 80, 0.4), rgba(249, 212, 35, 0.4));
-}
-.champeta {
-  background: linear-gradient(135deg, rgba(54, 209, 220, 0.4), rgba(91, 134, 229, 0.4));
+.fab:hover {
+  background-color: #ff3b3f;
+  transform: scale(1.05);
 }
 
-/* Efecto hover */
-.menu-item:hover {
-  transform: scale(1.03);
-  opacity: 1;
-  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.3);
+/* --- MODAL --- */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.6);
+  overflow-y: auto;
 }
 
-/* 💻 En escritorio los cuadros se muestran en fila */
-@media (min-width: 768px) {
-  .menu-container {
-    flex-direction: row;
-    width: 60%;
-    height: 35vh;
+.modal-content {
+  background: #fff;
+  margin: 10% auto;
+  padding: 20px;
+  border-radius: 20px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0px 4px 12px rgba(0,0,0,0.3);
+  animation: aparecer 0.3s ease-in-out;
+}
+
+/* Animación de entrada */
+@keyframes aparecer {
+  from { opacity: 0; transform: translateY(-30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.modal-content h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 15px;
+  font-size: 22px;
+}
+
+.modal-content h3 {
+  margin-top: 15px;
+  color: #444;
+  font-size: 18px;
+}
+
+.modal-content ul {
+  list-style: none;
+  padding: 0;
+}
+
+.modal-content li {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  color: #444;
+  font-weight: 500;
+}
+
+.close {
+  float: right;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #888;
+}
+
+.close:hover {
+  color: #000;
+}
+
+/* --- RESPONSIVIDAD --- */
+@media (max-width: 768px) {
+  .container {
+    width: 95%;
   }
 
-  .menu-item {
-    font-size: 1.2rem;
+  .container img,
+  .container video,
+  .container iframe {
+    max-width: 100%;
+  }
+
+  .modal-content {
+    margin: 20% auto;
+    border-radius: 10px;
   }
 }
