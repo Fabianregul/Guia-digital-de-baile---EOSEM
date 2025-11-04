@@ -128,6 +128,15 @@ main {
   border-bottom: 1px solid #ddd;
   color: #444;
   font-weight: 500;
+  cursor: pointer; /* 👉 muestra la mano al pasar el mouse */
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Efecto al pasar el cursor */
+.modal-content li:hover {
+  background-color: #ff5a5f;  /* cambia color al pasar el mouse */
+  color: white;               /* texto en blanco para contraste */
+  border-radius: 8px;
 }
 
 .close {
